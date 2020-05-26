@@ -23,7 +23,7 @@ class PhoneForm extends Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           placeholder="name"
           value={this.state.name}

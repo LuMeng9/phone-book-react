@@ -35,12 +35,25 @@ class App extends Component {
     });
   };
 
+  handleUpdate = (id, data) => {
+    const { information } = this.state;
+    this.setState({
+      information: information.map(it =>
+        id === it.id ? { ...it, ...data } : it
+      )
+    });
+  };
+
   render() {
     const { information } = this.state;
     return (
       <div>
         <PhoneForm onCreate={this.handleCreate} />
-        <PhoneInfoList data={information} onRemove={this.handleRemove} />
+        <PhoneInfoList
+          data={information}
+          onRemove={this.handleRemove}
+          onUpdate={this.handleUpdate}
+        />
         {JSON.stringify(information)}
       </div>
     );

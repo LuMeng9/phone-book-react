@@ -6,7 +6,16 @@ class PhoneInfo extends Component {
       id: 0,
       name: "your name",
       phone: "000-0000-0000"
-    }
+    },
+    onRemove: () => console.warn("Ooops")
+  };
+
+  handleRemove = () => {
+    const { info, onRemove } = this.props;
+    console.log("PhoneInfo this.props: " + this.props + " 14");
+    console.log("PhoneInfo info: " + info + " 15");
+    console.log("PhoneInfo onRemove: " + onRemove + " 16");
+    onRemove(info.id);
   };
 
   render() {
@@ -16,7 +25,7 @@ class PhoneInfo extends Component {
       margin: "8px"
     };
 
-    const { id, name, phone } = this.props.info;
+    const { name, phone } = this.props.info;
 
     return (
       <div style={style}>
@@ -24,6 +33,7 @@ class PhoneInfo extends Component {
           <b>{name}</b>
         </div>
         <div>{phone}</div>
+        <button onClick={this.handleRemove}>Delete</button>
       </div>
     );
   }

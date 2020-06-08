@@ -49,7 +49,20 @@ class PhoneInfo extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      !nextState.editing &&
+      !this.state.editing &&
+      nextProps.info === this.props.info
+    ) {
+      console.log("Hey");
+      return false;
+    }
+    return true;
+  }
+
   render() {
+    console.log("PhoneInfo rendering 53");
     const style = {
       border: "1px solid black",
       padding: "8px",
